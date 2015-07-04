@@ -28,8 +28,10 @@ merchBuyAuto <nome do item> {
 
 ### Definição das condições
 
+**Todos os campos são obrigatórios**
+
 **weight** - Peso do item requerido.  
-**char** - Número do slot do personagem que irá vender/comprar itens. Em caso de dúvida, inicie o openkore com o campo char desabilitado e verifique os números dos slots dos seus personagens.
+**char** - Número do slot do personagem que irá vender/comprar itens. Em caso de dúvida, inicie o openkore com o campo char desabilitado e verifique os números dos slots dos seus personagens.  
 **npc** - Localização do NPC onde os itens serão vendidos/comprados.  
 **storage** - Localização da kafra onde os itens serão obtidos/armazenados.  
 **storageSteps** - Sequência de conversa com a kafra.  
