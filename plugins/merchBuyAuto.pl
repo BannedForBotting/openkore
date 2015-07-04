@@ -44,7 +44,17 @@ sub loop {
 	if($conState == 5){
 		if(AI::action eq "storageAuto" && defined($storage{opened}) && !defined($state->{start})) {
 			for(my $i = 0; exists $config{"merchBuyAuto_$i"}; $i++) {
-				next if (!$config{"merchBuyAuto_$i"} || !$config{"merchBuyAuto_$i"."_npc"} || $config{"merchBuyAuto_$i"."_disabled"});
+				next if (!$config{"merchBuyAuto_$i"} || !$config{"merchBuyAuto_$i"."_char"} 
+						|| !$config{"merchBuyAuto_$i"."_weight"} 
+						|| !$config{"merchBuyAuto_$i"."_npc"}
+						|| !$config{"merchBuyAuto_$i"."_storage"}
+						|| !$config{"merchBuyAuto_$i"."_storageSteps"}
+						|| !$config{"merchBuyAuto_$i"."_minAmount"}
+						|| !$config{"merchBuyAuto_$i"."_maxAmount"}
+						|| !$config{"merchBuyAuto_$i"."_sellItems"}
+						|| !$config{"merchBuyAuto_$i"."_zeny"}
+						|| !$config{"merchBuyAuto_$i"."_distance"}
+						|| $config{"merchBuyAuto_$i"."_disabled"});
 				my $itemStorageIndex = getStorageIndex($config{"merchBuyAuto_$i"});
 				if(($storage{$itemStorageIndex}{amount} < $config{"merchBuyAuto_$i"."_minAmount"} 
 					&& getItemAmount($config{"merchBuyAuto_$i"}) < $config{"merchBuyAuto_$i"."_minAmount"})){
@@ -57,10 +67,20 @@ sub loop {
 		
 		if(defined($state->{start}) && timeOut($timeout{ai_merchBuyAuto})){
 			for(my $i = 0; exists $config{"merchBuyAuto_$i"}; $i++) {
-				next if (!$config{"merchBuyAuto_$i"} || !$config{"merchBuyAuto_$i"."_npc"} || $config{"merchBuyAuto_$i"."_disabled"});
+				next if (!$config{"merchBuyAuto_$i"} || !$config{"merchBuyAuto_$i"."_char"} 
+						|| !$config{"merchBuyAuto_$i"."_weight"} 
+						|| !$config{"merchBuyAuto_$i"."_npc"}
+						|| !$config{"merchBuyAuto_$i"."_storage"}
+						|| !$config{"merchBuyAuto_$i"."_storageSteps"}
+						|| !$config{"merchBuyAuto_$i"."_minAmount"}
+						|| !$config{"merchBuyAuto_$i"."_maxAmount"}
+						|| !$config{"merchBuyAuto_$i"."_sellItems"}
+						|| !$config{"merchBuyAuto_$i"."_zeny"}
+						|| !$config{"merchBuyAuto_$i"."_distance"}
+						|| $config{"merchBuyAuto_$i"."_disabled"});
 				if(getItemId($config{"merchBuyAuto_$i"})){
 					my $itemStorageIndex = getStorageIndex($config{"merchBuyAuto_$i"});
-					if($storage{$itemStorageIndex}{amount} < $config{"merchBuyAuto_$i"."_minAmount"}){
+					if($storage{$itemStorageIndex}{amount} < $config{"merchBuyAuto_$i"."_minAmount"}){ # Fix it [Verificar o inventário]
 						
 						# Precisa comprar itens
 						# Setando variáveis
@@ -85,8 +105,6 @@ sub loop {
 			}
 			$state->{finish} = 1 if(defined($state->{start}));
 		}
-		
-		
 		
 		if(AI::action eq "merchBuyAuto"){
 		
