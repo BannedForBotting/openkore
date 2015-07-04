@@ -43,7 +43,7 @@ merchBuyAuto <nome do item> {
 
 ### Exemplo de uso
 
-Observe que o campo minAmount está com o mesmo valor do campo maxAmount do bloco getAuto.  
+Observe que o campo **minAmount** do merchBuyAuto está com o mesmo valor do campo **maxAmount** do getAuto.  
 
 ```
 merchBuyAuto Poção Laranja {
