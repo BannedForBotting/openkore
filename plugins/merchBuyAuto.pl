@@ -6,7 +6,6 @@ use Misc qw(getNPCInfo offlineMode);
 use Globals qw($char @chars %config %storage $field $conState $AI $AI_forcedOff %items_lut $messageSender %ai_v %timeout $taskManager);
 use Utils qw(distance timeOut);
 use Utils::DataStructures qw(findKeyString);
-use Data::Dumper;
 use AI;
 
 Plugins::register("merchBuyAuto", "compra itens no mercador", \&unload);
@@ -15,7 +14,6 @@ my $hooks = Plugins::addHooks(
    ['AI_pre',\&loop,undef],
    ['packet/quit_response', \&fail, undef]
 );
-
 
 sub unload {
    Plugins::delHooks($hooks);
