@@ -26,6 +26,12 @@ merchBuyAuto <nome do item> {
 }
 ```
 
+### Timeouts.txt
+
+Adicione a seguinte variável no arquivo timeouts.txt na pasta control:  
+
+ai_merchBuyAuto 2  
+
 ### Definição das condições
 
 **Todos os campos são obrigatórios**
